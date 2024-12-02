@@ -1,0 +1,1 @@
+ExUnit.start(capture_log: false, capture_io: false)
