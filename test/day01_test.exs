@@ -18,5 +18,13 @@ defmodule Day01Test do
     IO.inspect(Day01.day01_answer())
   end
 
+  test "day 01 example part 2 works" do
+    assert Day01.day01_part2() == 31
+  end
+
+  test "day 01 part 2 answer" do
+    IO.inspect(Day01.day01_part2())
+  end
+
 
 end

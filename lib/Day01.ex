@@ -4,6 +4,7 @@ defmodule Day01 do
   """
   @external_resource "priv/day01_sample.txt"
   @input File.read!("priv/day01-01.txt")
+  #@input File.read!("priv/day01_sample.txt")
          |> String.trim()                      # remove trailing newlines or spaces
          |> String.split("\n")                 # split by lines
          |> Enum.map(fn line ->
@@ -30,9 +31,25 @@ defmodule Day01 do
     right = Enum.sort(right)
     Enum.zip_reduce(left, right,0, fn x, y,acc ->
       absxy = abs(x - y)
-      IO.inspect("x is #{x}, y is #{y}, x-y is #{absxy}")
+      #IO.inspect("x is #{x}, y is #{y}, x-y is #{absxy}")
       abs(x - y) + acc
     end)
   end
+
+  def day01_part2 do
+    {left, right} = create_lists()
+    IO.inspect(left)
+    rightFreq = Enum.frequencies(right)
+    Enum.reduce(left, 0, fn x, acc ->
+      #IO.inspect("x is #{x}, rightFreq is #{rightFreq[x]} acc is #{acc}")
+      case rightFreq[x] do
+                nil -> acc
+                _ -> x * rightFreq[x] + acc
+                end
+
+    end
+    )
+
+end
 
 end
